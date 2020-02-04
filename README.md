@@ -332,7 +332,7 @@ and the output is:
 <img src="yfig3.png" width="800px">
 </p>
 
-Assignment #4 - Due Tuesday 2/11/20
+### Assignment #4 - Due Tuesday 2/11/20
 
 Consider the following distribution of *y* representing the number of prior spells of incarceration for a population of incoming prison inmates. With samples of size *N* = 300, 
 
@@ -345,5 +345,5 @@ Consider the following distribution of *y* representing the number of prior spel
 
 ```Rout
 y <- c(rep(0,4886),rep(1,16339),rep(2,25573),rep(3,24704),rep(4,16297),rep(5,8169),rep(6,3013),rep(7,821),
-       rep(8,164),rep(9,31),rep(10,2),rep(11,1)
+       rep(8,164),rep(9,31),rep(10,2),rep(11,1))
 ```
