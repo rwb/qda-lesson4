@@ -181,7 +181,7 @@ and the output is:
 > 
 ```
 
-Next, we draw a sample of 500 people from the original population and we calculate the recidivism rate and the standard error of the recidivism rate for the sample data:
+Next, we draw a sample of 1000 people from the original population and we calculate the recidivism rate and the standard error of the recidivism rate for the sample data:
 
 ```R
 sampsize <- 1000
