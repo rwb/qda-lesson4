@@ -77,3 +77,86 @@ and the answer is:
 [1] 6.247523
 > 
 ```
+
+Now, let's draw a single sample of size n=[sampsize] from this
+population (with replacement) and calculate the sample mean and
+standard error of the mean for that single sample:
+
+```R
+sampsize <- 1000
+yss <- sample(y,size=sampsize,replace=T)
+mean(yss)
+sd(yss)/sqrt(sampsize)
+```
+
+and the output is:
+
+```R
+> sampsize <- 1000
+> yss <- sample(y,size=sampsize,replace=T)
+> mean(yss)
+[1] 6.134
+> sd(yss)/sqrt(sampsize)
+[1] 0.066667
+> 
+```
+
+Next, let's repeat this process [nsamples] times
+
+```
+nsamples <- 100000
+
+ys_mean <- vector()
+se_mean <- vector()
+
+for(i in 1:nsamples)
+  {
+   ys <- sample(y,size=sampsize,replace=T)
+   ys_mean[i] <- mean(ys)
+   se_mean[i] <- sd(ys)/sqrt(sampsize)
+   }
+
+# look at the results
+
+mean(ys_mean)
+sd(ys_mean)
+mean(se_mean)
+```
+
+and the output is:
+
+```Rout
+> nsamples <- 100000
+> 
+> ys_mean <- vector()
+> se_mean <- vector()
+> 
+> for(i in 1:nsamples)
++   {
++    ys <- sample(y,size=sampsize,replace=T)
++    ys_mean[i] <- mean(ys)
++    se_mean[i] <- sd(ys)/sqrt(sampsize)
++    }
+> 
+> # look at the results
+> 
+> mean(ys_mean)
+[1] 6.248071
+> sd(ys_mean)
+[1] 0.06845787
+> mean(se_mean)
+[1] 0.06843183
+> 
+```
+
+Let's also look at a histogram of the sample means:
+
+``R
+hist(ys_mean,main="Histogram of Sample Means")
+```
+
+and the output is:
+
+<p align="center">
+<img src="yfig2.png" width="800px">
+</p>
