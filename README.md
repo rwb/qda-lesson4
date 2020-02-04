@@ -160,3 +160,88 @@ and the output is:
 <p align="center">
 <img src="yfig2.png" width="800px">
 </p>
+
+As we can see, the mean of the standard errors is very close to the standard deviation of the sample means - which is what we expect. 
+
+### Inference About the Population Median
+
+An issue with the population distribution of *y* is that it exhibits a skew. From elementary statistics, we know that the median is generally considered to be a better measure of central tendency (than the mean) when the data are skewed. So, let's see what the population median is:
+
+```
+median(y)
+```
+
+and the output is:
+
+```Rout
+> median(y)
+[1] 6
+> 
+```
+
+We now draw a single sample of size n=[sampsize] from this
+population (with replacement) and calculate the sample median.
+
+```R
+sampsize <- 100
+yss <- sample(y,size=sampsize,replace=T)
+median(yss)
+```
+
+and the output is:
+
+```Rout
+> sampsize <- 100
+> yss <- sample(y,size=sampsize,replace=T)
+> median(yss)
+[1] 6
+> 
+```
+
+A new problem is that there is no good closed-form calculation for the standard error of the median. There are some approximations but the quality sometimes depends on the amount of skew in the data. A better solution is to use the bootstrap to calculate the standard error of the median. Let's see how it does here. First, we draw lots of samples from the population and calculate the median within each sample. Here are the results:
+
+```R
+nsamples <- 100000
+sampsize <- 100
+
+ys_median <- vector()
+
+for(i in 1:nsamples)
+  {
+   ys <- sample(y,size=sampsize,replace=T)
+   ys_median[i] <- median(ys)
+   }
+
+# look at the results
+
+mean(ys_median)
+sd(ys_median)
+hist(ys_median)
+```
+
+and the output is:
+
+```
+> nsamples <- 100000
+> sampsize <- 100
+> 
+> ys_median <- vector()
+> 
+> for(i in 1:nsamples)
++   {
++    ys <- sample(y,size=sampsize,replace=T)
++    ys_median[i] <- median(ys)
++    }
+> 
+> # look at the results
+> 
+> mean(ys_median)
+[1] 6.102425
+> sd(ys_median)
+[1] 0.3088812
+> hist(ys_median)
+>
+```
+<p align="center">
+<img src="yfig3.png" width="800px">
+</p>
