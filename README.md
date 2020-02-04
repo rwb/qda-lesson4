@@ -151,8 +151,6 @@ and the output is:
 
 Let's also look at a histogram of the sample means:
 
-Let's also look at a histogram of the sample means:
-
 ```R
 hist(ys_mean,main="Histogram of Sample Means")
 ```
